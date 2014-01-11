@@ -7,9 +7,9 @@ class Piece:
         self.owner = ""
     
     #setup assigns owner and type to itself
-    def setup(self,owner1,type1):
-        self.type = type1
-        self.owner = owner1
+    def setup(self,owner,type):
+        self.type = type
+        self.owner = owner
     
     #returns type
     def getType(self):
@@ -20,6 +20,6 @@ class Piece:
         return self.owner
 
     #prints owner and type    
-    def printPiece(self):
-        print("Owner =" , self.owner )
-        print("Type =" , self.type )      
+    def printPieceInfo(self):
+        print("Owner =" , self.owner)
+        print("Type =" , self.type)

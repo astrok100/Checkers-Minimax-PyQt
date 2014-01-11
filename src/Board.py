@@ -56,24 +56,26 @@ class Board:
         number of pieces - 1 
     """    
     def removePiece(self,x,y): 
-        tmp = self.getPieceAt(x,y)
-        if self.array[int(x)][int(y)] != None :
+        if self.pieceAt(x,y) :
+            tmp = self.getPieceAt(x,y)
             self.array[int(x)][int(y)] = None
             if tmp.getOwner() == "AI":
                 self.aiPieces-=1
             elif tmp.getOwner() == "Player":
                 self.playerPieces-=1
-                
             return tmp
     """  
         updatePiece takes a type to be updated to
         at position x and y, removes that piece
         and re-adds it back at the same position with the new type
     """
-    def updatePiece(self,type,x,y):
+    def updatePieceType(self,type,x,y):
         tmp = self.removePiece(x, y)
-        self.addPiece(tmp.getOwner(), type, x, y)
-    
+        if tmp:
+            self.addPiece(tmp.getOwner(), type, x, y)
+            return True
+        else:
+            return False
     
     # checks if there is a piece at X , Y 
     def pieceAt(self,x,y):
@@ -99,4 +101,8 @@ class Board:
     """
     def movePiece(self,x,y,x1,y1):
         tmp = self.removePiece(x, y)
-        self.addPiece(tmp.getOwner(), tmp.getType(), x1, y1)
+        if tmp:
+            self.addPiece(tmp.getOwner(), tmp.getType(), x1, y1)
+            return True
+        else:
+            return False

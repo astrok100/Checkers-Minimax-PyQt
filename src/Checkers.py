@@ -35,6 +35,7 @@ class Checkers:
                     
     def loadBoard(self,board):
         self.board = board
+        
     # returns the number of Ai pieces
     def getAI(self):
         return self.board.countAiPieces()
@@ -141,7 +142,7 @@ class Checkers:
                             
                             #checks if it is king
                             if self.isKing(x1,y1):
-                                self.board.updatePiece(1,x1,y1)
+                                self.board.updatePieceType(1,x1,y1)
                             
                             #checks if it can jump again sets jumpAgain to true if true else set to False
                             if self.canJump(x1, y1):
@@ -164,7 +165,7 @@ class Checkers:
                             self.board.removePiece(removePieceX, removePieceY)
                             #after jumping check if it can be Kinged and can it jump again 
                             if self.isKing(x1,y1):
-                                self.board.updatePiece(1,x1,y1)
+                                self.board.updatePieceType(1,x1,y1)
                             
                             if self.canJump(x1, y1):
                                 moved = False
@@ -185,7 +186,7 @@ class Checkers:
                             break
                     # if it can be kinged and updates the piece to a king
                     if self.isKing(x1,y1):
-                        self.board.updatePiece(1,x1,y1)
+                        self.board.updatePieceType(1,x1,y1)
                         
             #check is the game is over
             self.checkWin()
